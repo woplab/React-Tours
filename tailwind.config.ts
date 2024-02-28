@@ -19,6 +19,7 @@ const config: Config = {
         dark_blue: "#05073C",
         orange: "#EB662B",
         light_orange: "#E2AD64",
+        transparent_orange: "rgba(235, 102, 43, 0.15)",
         gray: "#717171",
         light_gray: "#E7E6E6",
       },

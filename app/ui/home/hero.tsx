@@ -2,11 +2,11 @@ import React from 'react';
 
 const HeroSection: React.FC = () => {
     return (
-        <div className="flex items-center justify-between bg-gray-800 text-white bg-orange rounded-xl m-10">
+        <div className="flex items-center justify-between bg-gray-800 text-white bg-orange rounded-xl my-10 mx-8">
             <div className="p-8 w-1/2 flex flex-col justify-center items-center text-center gap-6">
                 <h1 className="text-4xl font-bold">
                     Grab up to
-                    <span className="text-orange p-6 pb-8" style={{ background: `url("/brush.png") right center/contain no-repeat` }}>35% off</span>
+                    <span className="text-orange p-[50px] bg-contain" style={{ background: `url("/brush.png") 2px 48px no-repeat`}}>35% off</span>
                     on your favorite Destination
                 </h1>
                 <p className="text-lg">Limited time offer, don't miss the opportunity</p>
