@@ -5,25 +5,25 @@
       "id": 1,
       "name": "City Explorer Tour",
       "description": "Up to 50% Discount on\nEarly Booking",
-      "image": "/s1.png"
+      "image": "/assets/tours-images/s1.png"
     },
     {
       "id": 2,
       "name": "Mountain Adventure Trek",
       "description": "Extra $200 on Winter\nTours coupon gift",
-      "image": "/s2.png"
+      "image": "/assets/tours-images/s2.png"
     },
     {
       "id": 3,
       "name": "Beach Paradise Getaway",
       "description": "In Hotels Near Cities A\nShort Break!",
-      "image": "/s3.png"
+      "image": "/assets/tours-images/s3.png"
     },
     {
       "id": 4,
       "name": "Cultural Heritage Tour",
       "description": "Discover Iceland\nKayaking Tours",
-      "image": "/s4.png"
+      "image": "/assets/tours-images/s4.png"
     }
   ]
 }

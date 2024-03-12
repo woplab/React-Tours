@@ -27,14 +27,14 @@ const SpecialOffers: React.FC<Props> = ({ tours }) => {
     };
 
     return (
-        <div className="container mx-auto py-16 px-8">
+        <div className="container mx-auto py-8 px-8">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold text-dark_blue">Special Offers</h2>
                 <Link className="text-dark_blue" href="/special-offers">
                     See All
                 </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 py-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
                 {tours.slice(0, 4).map((tour) => (
                     <div key={tour.id} className="overflow-hidden flex gap-4">
                         <img src={tour.image} alt={tour.name} className="w-20 h-20 object-cover" />

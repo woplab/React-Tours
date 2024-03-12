@@ -1,8 +1,11 @@
 'use client';
-import Hero from "@/app/ui/home/hero";
+import Hero from "@/app/ui/home/Hero";
 import SpecialOffers from "@/app/ui/home/SpecialOffers";
 import TourSlider from "@/app/ui/home/TourSlider";
 import { useEffect, useState } from 'react';
+import TravelInfo from "@/app/ui/home/TravelInfo";
+import TrendingDestinations from "@/app/ui/home/TrendingDestinations";
+import BookNow from "@/app/ui/home/BookNow";
 
 
 export default function Home() {
@@ -29,6 +32,9 @@ export default function Home() {
         <Hero/>
         <SpecialOffers tours={tours} />
         <TourSlider />
+        <TravelInfo />
+        <TrendingDestinations />
+        <BookNow />
     </>
   );
 }
