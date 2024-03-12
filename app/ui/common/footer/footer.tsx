@@ -12,6 +12,7 @@ const Footer: React.FC = () => {
 
                 <a href="https://www.facebook.com" target="_blank">Follow Us</a>
             </div>
+
             <div className="container mx-auto flex flex-col lg:flex-row justify-between px-8 pt-8">
                 {/* Left Side - Navigation */}
                 <div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+// @ts-ignore
 import Link from 'next/link';
 import useExchangeRate from "../../../data/API-rates/useExchangeRate";
 import Skeleton from './skeleton';
