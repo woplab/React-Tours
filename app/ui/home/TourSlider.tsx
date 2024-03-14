@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import toursData from '../../../public/data/tours/tours.json';
+import Image from "next/image";
 
 interface Tour {
     id: number;
@@ -102,7 +103,7 @@ const TourSlider: React.FC = () => {
     }, []);
 
     return (
-        <div className="relative px-4">
+        <div className="relative px-4 container mx-auto">
             <button className="absolute top-[60%] left-[-5px] transform -translate-y-1/2 bg-gray-200 p-2 rounded-l-md z-10" onClick={goToPrevSlide}>
                 <svg className="h-8 w-8 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -125,7 +126,7 @@ const TourSlider: React.FC = () => {
                         {limitedTours.map((tour: Tour) => (
                             <SwiperSlide key={tour.id}>
                                 <div className="bg-white rounded-lg overflow-hidden flex flex-col h-full ">
-                                    <img src={`${tour.pictures[0]}`} alt={tour.name} className="w-full h-40 object-cover aspect-video" />
+                                    <Image src={`${tour.pictures[0]}`} alt={tour.name} className="w-full h-40 object-cover aspect-video" />
                                     <div className="p-4 flex flex-col justify-between h-full">
                                         <h3 className="text-lg font-bold text-dark_blue mb-2">{tour.name}</h3>
                                         <p className="text-dark_blue">{tour.description}</p>
