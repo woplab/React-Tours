@@ -20,7 +20,6 @@ const Header: React.FC = () => {
 
         fetchUserCurrencyCode();
 
-        // Добавляем слушатель событий для определения "стиким" хедера
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
