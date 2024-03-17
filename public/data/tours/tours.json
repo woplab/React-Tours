@@ -9,7 +9,9 @@
       "group_size": 10,
       "age_category": "Adults",
       "languages": ["English", "Spanish"],
-      "pictures": ["/assets/tours-images/city_explorer1.png", "/assets/tours-images/city_explorer2.jpg", "/assets/tours-images/city_explorer3.jpg"]
+      "pictures": ["/assets/tours-images/city_explorer1.png", "/assets/tours-images/city_explorer2.jpg", "/assets/tours-images/city_explorer3.jpg"],
+      "destinations": ["Paris", "Singapore", "Roma", "Bangkok", "Bali", "Phuket"],
+      "attractions": ["Eiffel Tower", "Statue of Liberty", "Colosseum"]
     },
     {
       "id": 2,
@@ -20,7 +22,9 @@
       "group_size": 8,
       "age_category": "Adults",
       "languages": ["English", "French"],
-      "pictures": ["/assets/tours-images/mountain_trek1.jpg", "/assets/tours-images/mountain_trek2.jpg", "/assets/tours-images/mountain_trek3.jpg"]
+      "pictures": ["/assets/tours-images/mountain_trek1.jpg", "/assets/tours-images/mountain_trek2.jpg", "/assets/tours-images/mountain_trek3.jpg"],
+      "destinations": ["Paris", "Roma", "Bali", "Phuket"],
+      "attractions": ["Eiffel Tower", "Colosseum"]
     },
     {
       "id": 3,
@@ -31,7 +35,9 @@
       "group_size": 12,
       "age_category": "Adults",
       "languages": ["English", "Italian"],
-      "pictures": ["/assets/tours-images/beach_getaway1.jpg", "/assets/tours-images/beach_getaway2.jpg", "/assets/tours-images/beach_getaway3.jpg"]
+      "pictures": ["/assets/tours-images/beach_getaway1.jpg", "/assets/tours-images/beach_getaway2.jpg", "/assets/tours-images/beach_getaway3.jpg"],
+      "destinations": ["Bali", "Phuket"],
+      "attractions": ["Antelope Canyon"]
     },
     {
       "id": 4,
@@ -42,7 +48,9 @@
       "group_size": 15,
       "age_category": "Adults",
       "languages": ["English", "German"],
-      "pictures": ["/assets/tours-images/cultural_tour1.jpg", "/assets/tours-images/cultural_tour2.jpg", "/assets/tours-images/cultural_tour3.jpg"]
+      "pictures": ["/assets/tours-images/cultural_tour1.jpg", "/assets/tours-images/cultural_tour2.jpg", "/assets/tours-images/cultural_tour3.jpg"],
+      "destinations": ["Paris", "Roma", "Bangkok", "Bali"],
+      "attractions": ["Colosseum", "Eiffel Tower", "Tower of London"]
     },
     {
       "id": 5,
@@ -53,7 +61,9 @@
       "group_size": 10,
       "age_category": "Adults",
       "languages": ["English", "Spanish"],
-      "pictures": ["/assets/tours-images/safari_expedition1.jpg", "/assets/tours-images/safari_expedition2.jpg", "/assets/tours-images/safari_expedition3.jpg"]
+      "pictures": ["/assets/tours-images/safari_expedition1.jpg", "/assets/tours-images/safari_expedition2.jpg", "/assets/tours-images/safari_expedition3.jpg"],
+      "destinations": ["Roma", "Bali", "Phuket"],
+      "attractions": ["Colosseum", "Eiffel Tower"]
     },
     {
       "id": 6,
@@ -64,7 +74,9 @@
       "group_size": 8,
       "age_category": "Adults",
       "languages": ["English", "French"],
-      "pictures": ["/assets/tours-images/wine_tasting1.jpg", "/assets/tours-images/wine_tasting2.jpg", "/assets/tours-images/wine_tasting3.jpg"]
+      "pictures": ["/assets/tours-images/wine_tasting1.jpg", "/assets/tours-images/wine_tasting2.jpg", "/assets/tours-images/wine_tasting3.jpg"],
+      "destinations": ["Paris", "Bangkok", "Bali"],
+      "attractions": ["Eiffel Tower"]
     },
     {
       "id": 7,
@@ -75,7 +87,9 @@
       "group_size": 12,
       "age_category": "Adults",
       "languages": ["English", "Italian"],
-      "pictures": ["/assets/tours-images/castle_tour1.jpg", "/assets/tours-images/castle_tour2.jpg", "/assets/tours-images/castle_tour3.jpg"]
+      "pictures": ["/assets/tours-images/castle_tour1.jpg", "/assets/tours-images/castle_tour2.jpg", "/assets/tours-images/castle_tour3.jpg"],
+      "destinations": ["Paris", "Roma", "Bali", "Phuket"],
+      "attractions": ["Eiffel Tower", "Colosseum"]
     },
     {
       "id": 8,
@@ -86,7 +100,9 @@
       "group_size": 10,
       "age_category": "Adults",
       "languages": ["English", "Spanish"],
-      "pictures": ["/assets/tours-images/culinary_tour1.jpg", "/assets/tours-images/culinary_tour2.jpg", "/assets/tours-images/culinary_tour3.jpg"]
+      "pictures": ["/assets/tours-images/culinary_tour1.jpg", "/assets/tours-images/culinary_tour2.jpg", "/assets/tours-images/culinary_tour3.jpg"],
+      "destinations": ["Bangkok", "Bali"],
+      "attractions": ["Eiffel Tower", "Louvre"]
     },
     {
       "id": 9,
@@ -97,7 +113,9 @@
       "group_size": 10,
       "age_category": "Adults",
       "languages": ["English", "French"],
-      "pictures": ["/assets/tours-images/adventure_sports1.jpg", "/assets/tours-images/adventure_sports2.jpg", "/assets/tours-images/adventure_sports3.jpg"]
+      "pictures": ["/assets/tours-images/adventure_sports1.jpg", "/assets/tours-images/adventure_sports2.jpg", "/assets/tours-images/adventure_sports3.jpg"],
+      "destinations": ["Roma", "Bangkok", "Phuket"],
+      "attractions": ["Colosseum", "Eiffel Tower"]
     },
     {
       "id": 10,
@@ -108,7 +126,9 @@
       "group_size": 12,
       "age_category": "Adults",
       "languages": ["English", "German"],
-      "pictures": ["/assets/tours-images/island_hopping1.jpg", "/assets/tours-images/island_hopping2.jpg", "/assets/tours-images/island_hopping3.jpg"]
+      "pictures": ["/assets/tours-images/island_hopping1.jpg", "/assets/tours-images/island_hopping2.jpg", "/assets/tours-images/island_hopping3.jpg"],
+      "destinations": ["Bali", "Phuket"],
+      "attractions": ["Eiffel Tower", "Statue of Liberty"]
     },
     {
       "id": 11,
@@ -119,7 +139,9 @@
       "group_size": 15,
       "age_category": "Adults",
       "languages": ["English", "Spanish"],
-      "pictures": ["/assets/tours-images/art_architecture1.jpg", "/assets/tours-images/art_architecture2.jpg", "/assets/tours-images/art_architecture3.jpg"]
+      "pictures": ["/assets/tours-images/art_architecture1.jpg", "/assets/tours-images/art_architecture2.jpg", "/assets/tours-images/art_architecture3.jpg"],
+      "destinations": ["Paris", "Roma", "Bangkok", "Bali"],
+      "attractions": ["Eiffel Tower", "Louvre"]
     },
     {
       "id": 12,
@@ -130,7 +152,9 @@
       "group_size": 8,
       "age_category": "Adults",
       "languages": ["English", "Italian"],
-      "pictures": ["/assets/tours-images/photography_expedition1.jpg", "/assets/tours-images/photography_expedition2.jpg", "/assets/tours-images/photography_expedition3.jpg"]
+      "pictures": ["/assets/tours-images/photography_expedition1.jpg", "/assets/tours-images/photography_expedition2.jpg", "/assets/tours-images/photography_expedition3.jpg"],
+      "destinations": ["Paris", "Singapore", "Roma"],
+      "attractions": ["Eiffel Tower", "Colosseum", "Vatican Museums"]
     }
   ]
 }
