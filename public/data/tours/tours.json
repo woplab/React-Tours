@@ -9,7 +9,7 @@
       "group_size": 10,
       "age_category": "Adults",
       "languages": ["English", "Spanish"],
-      "pictures": ["/assets/tours-images/city_explorer1.png", "/assets/tours-images/city_explorer2.jpg", "/assets/tours-images/city_explorer3.jpg"],
+      "pictures": ["/assets/tours-images/city_explorer1.png", "/assets/tours-images/city_explorer2.jpg", "/assets/tours-images/city_explorer3.jpg", "/assets/tours-images/mountain_trek1.jpg"],
       "destinations": ["Paris", "Singapore", "Roma", "Bangkok", "Bali", "Phuket"],
       "attractions": ["Eiffel Tower", "Statue of Liberty", "Colosseum"]
     },
