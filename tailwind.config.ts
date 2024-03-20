@@ -23,6 +23,7 @@ const config: Config = {
         transparent_orange: "rgba(235, 102, 43, 0.15)",
         gray: "#717171",
         light_gray: "#E7E6E6",
+        light_gray2: "#DDDDDD",
       },
     },
   },

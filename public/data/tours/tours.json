@@ -11,7 +11,9 @@
       "languages": ["English", "Spanish"],
       "pictures": ["/assets/tours-images/city_explorer1.png", "/assets/tours-images/city_explorer2.jpg", "/assets/tours-images/city_explorer3.jpg", "/assets/tours-images/mountain_trek1.jpg"],
       "destinations": ["Paris", "Singapore", "Roma", "Bangkok", "Bali", "Phuket"],
-      "attractions": ["Eiffel Tower", "Statue of Liberty", "Colosseum"]
+      "attractions": ["Eiffel Tower", "Statue of Liberty", "Colosseum"],
+      "start_date": "2024-06-01",
+      "end_date": "2024-06-03"
     },
     {
       "id": 2,
@@ -24,7 +26,9 @@
       "languages": ["English", "French"],
       "pictures": ["/assets/tours-images/mountain_trek1.jpg", "/assets/tours-images/mountain_trek2.jpg", "/assets/tours-images/mountain_trek3.jpg"],
       "destinations": ["Paris", "Roma", "Bali", "Phuket"],
-      "attractions": ["Eiffel Tower", "Colosseum"]
+      "attractions": ["Eiffel Tower", "Colosseum"],
+      "start_date": "2024-07-10",
+      "end_date": "2024-07-14"
     },
     {
       "id": 3,
@@ -37,7 +41,9 @@
       "languages": ["English", "Italian"],
       "pictures": ["/assets/tours-images/beach_getaway1.jpg", "/assets/tours-images/beach_getaway2.jpg", "/assets/tours-images/beach_getaway3.jpg"],
       "destinations": ["Bali", "Phuket"],
-      "attractions": ["Antelope Canyon"]
+      "attractions": ["Antelope Canyon"],
+      "start_date": "2024-08-20",
+      "end_date": "2024-08-23"
     },
     {
       "id": 4,
@@ -50,7 +56,9 @@
       "languages": ["English", "German"],
       "pictures": ["/assets/tours-images/cultural_tour1.jpg", "/assets/tours-images/cultural_tour2.jpg", "/assets/tours-images/cultural_tour3.jpg"],
       "destinations": ["Paris", "Roma", "Bangkok", "Bali"],
-      "attractions": ["Colosseum", "Eiffel Tower", "Tower of London"]
+      "attractions": ["Colosseum", "Eiffel Tower", "Tower of London"],
+      "start_date": "2024-09-15",
+      "end_date": "2024-09-19"
     },
     {
       "id": 5,
@@ -63,7 +71,9 @@
       "languages": ["English", "Spanish"],
       "pictures": ["/assets/tours-images/safari_expedition1.jpg", "/assets/tours-images/safari_expedition2.jpg", "/assets/tours-images/safari_expedition3.jpg"],
       "destinations": ["Roma", "Bali", "Phuket"],
-      "attractions": ["Colosseum", "Eiffel Tower"]
+      "attractions": ["Colosseum", "Eiffel Tower"],
+      "start_date": "2024-10-05",
+      "end_date": "2024-10-11"
     },
     {
       "id": 6,
@@ -76,7 +86,9 @@
       "languages": ["English", "French"],
       "pictures": ["/assets/tours-images/wine_tasting1.jpg", "/assets/tours-images/wine_tasting2.jpg", "/assets/tours-images/wine_tasting3.jpg"],
       "destinations": ["Paris", "Bangkok", "Bali"],
-      "attractions": ["Eiffel Tower"]
+      "attractions": ["Eiffel Tower"],
+      "start_date": "2024-11-03",
+      "end_date": "2024-11-04"
     },
     {
       "id": 7,
@@ -89,7 +101,9 @@
       "languages": ["English", "Italian"],
       "pictures": ["/assets/tours-images/castle_tour1.jpg", "/assets/tours-images/castle_tour2.jpg", "/assets/tours-images/castle_tour3.jpg"],
       "destinations": ["Paris", "Roma", "Bali", "Phuket"],
-      "attractions": ["Eiffel Tower", "Colosseum"]
+      "attractions": ["Eiffel Tower", "Colosseum"],
+      "start_date": "2025-01-10",
+      "end_date": "2025-01-13"
     },
     {
       "id": 8,
@@ -102,7 +116,9 @@
       "languages": ["English", "Spanish"],
       "pictures": ["/assets/tours-images/culinary_tour1.jpg", "/assets/tours-images/culinary_tour2.jpg", "/assets/tours-images/culinary_tour3.jpg"],
       "destinations": ["Bangkok", "Bali"],
-      "attractions": ["Eiffel Tower", "Louvre"]
+      "attractions": ["Eiffel Tower", "Louvre"],
+      "start_date": "2025-01-10",
+      "end_date": "2025-01-13"
     },
     {
       "id": 9,
@@ -115,7 +131,9 @@
       "languages": ["English", "French"],
       "pictures": ["/assets/tours-images/adventure_sports1.jpg", "/assets/tours-images/adventure_sports2.jpg", "/assets/tours-images/adventure_sports3.jpg"],
       "destinations": ["Roma", "Bangkok", "Phuket"],
-      "attractions": ["Colosseum", "Eiffel Tower"]
+      "attractions": ["Colosseum", "Eiffel Tower"],
+      "start_date": "2025-01-10",
+      "end_date": "2025-01-13"
     },
     {
       "id": 10,
@@ -128,7 +146,9 @@
       "languages": ["English", "German"],
       "pictures": ["/assets/tours-images/island_hopping1.jpg", "/assets/tours-images/island_hopping2.jpg", "/assets/tours-images/island_hopping3.jpg"],
       "destinations": ["Bali", "Phuket"],
-      "attractions": ["Eiffel Tower", "Statue of Liberty"]
+      "attractions": ["Eiffel Tower", "Statue of Liberty"],
+      "start_date": "2025-01-10",
+      "end_date": "2025-01-13"
     },
     {
       "id": 11,
@@ -141,7 +161,9 @@
       "languages": ["English", "Spanish"],
       "pictures": ["/assets/tours-images/art_architecture1.jpg", "/assets/tours-images/art_architecture2.jpg", "/assets/tours-images/art_architecture3.jpg"],
       "destinations": ["Paris", "Roma", "Bangkok", "Bali"],
-      "attractions": ["Eiffel Tower", "Louvre"]
+      "attractions": ["Eiffel Tower", "Louvre"],
+      "start_date": "2025-01-10",
+      "end_date": "2025-01-13"
     },
     {
       "id": 12,
@@ -154,7 +176,9 @@
       "languages": ["English", "Italian"],
       "pictures": ["/assets/tours-images/photography_expedition1.jpg", "/assets/tours-images/photography_expedition2.jpg", "/assets/tours-images/photography_expedition3.jpg"],
       "destinations": ["Paris", "Singapore", "Roma"],
-      "attractions": ["Eiffel Tower", "Colosseum", "Vatican Museums"]
+      "attractions": ["Eiffel Tower", "Colosseum", "Vatican Museums"],
+      "start_date": "2025-01-10",
+      "end_date": "2025-01-13"
     }
   ]
 }

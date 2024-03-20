@@ -17,9 +17,9 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
   background: rgba(235, 102, 43, 0.05);
   padding-top: 94px;
+  color: #05073C;
 }
 
 @layer utilities {
@@ -100,9 +100,12 @@ a:hover {
   margin-bottom: 10px;
 }
 
-
 .my-masonry-grid_column:last-child {
   margin-bottom: 0;
+}
+
+.ticket-button{
+  cursor: pointer;
 }
 
 

@@ -7,6 +7,8 @@ import TourRating from '../../ui/tours/TourRating';
 import TourShare from '../../ui/tours/TourShare';
 import TourGallery from '../../ui/tours/TourGallery';
 import TourDetails from '../../ui/tours/TourDetails';
+import Breadcrumbs from '../../ui/tours/Breadcrumbs';
+import BookingComponent  from '../../ui/tours/Booking';
 
 interface TourProps {
     id: number;
@@ -20,6 +22,8 @@ interface TourProps {
     pictures: string[];
     destinations: string[];
     attractions: string[];
+    start_date: string;
+    end_date: string;
 }
 
 const TourPage: React.FC = () => {
@@ -38,27 +42,9 @@ const TourPage: React.FC = () => {
 
     return (
         <div className="container mx-auto py-8 px-8">
-            <div className="flex flex-row justify-between items-center">
-                <nav className="py-4 text-sm" aria-label="breadcrumbs">
-                    <ol className="flex space-x-4">
-                        <li>
-                            <Link className="text-dark_blue" href="/">
-                                Home
-                            </Link>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                            <span className="text-dark_blue">{'>'}</span>
-                            <Link className="text-dark_blue" href="/tours">
-                                Tours
-                            </Link>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                            <span className="text-dark_blue">{'>'}</span>
-                            <span className="text-dark_blue">{tour.name}</span>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
+
+            {/* Breadcrumbs */}
+            <Breadcrumbs tourName={tour.name} />
 
             <h1 className="text-2xl text-dark_blue font-bold ">{tour.name}</h1>
 
@@ -72,14 +58,23 @@ const TourPage: React.FC = () => {
 
             {/* Use TourGallery component */}
             <TourGallery pictures={tour.pictures} />
+            <div className="flex flex-row justify-between">
+                <div className="w-2/3">
+                    {/* TourDetails */}
+                    <TourDetails
+                        duration={tour.duration}
+                        groupSize={tour.group_size}
+                        ageCategory={tour.age_category}
+                        languages={tour.languages}
+                    />
+                </div>
 
-            {/* TourDetails */}
-            <TourDetails
-                duration={tour.duration}
-                groupSize={tour.group_size}
-                ageCategory={tour.age_category}
-                languages={tour.languages}
-            />
+                <div className="w-1/3">
+                    {/* Booking */}
+                    <BookingComponent tour={tour} />
+                </div>
+            </div>
+
 
             <p>Price per day: ${tour.price_per_day}</p>
             <p>Description: {tour.description}</p>
