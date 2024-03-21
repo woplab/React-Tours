@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { differenceInDays, format } from 'date-fns';
 import { FaCalendarAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 interface BookingProps {
     tour: {
@@ -65,6 +66,16 @@ const BookingComponent: React.FC<BookingProps> = ({ tour }) => {
         setter((prevValue) => (prevValue > 0 ? prevValue - 1 : 0));
     };
 
+    const handleBookNowClick = () => {
+        const message = `Number of adult tickets: ${adultTickets}\nNumber of child tickets: ${childTickets}\nNumber of senior tickets: ${seniorTickets}\nTotal Price: $${totalPrice}`;
+        Swal.fire({
+            title: 'Booking Information',
+            text: message,
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    };
+
     return (
         <div className="container mx-auto px-4 py-6 bg-white rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold mb-4">From: ${minTotalPrice}</h2>
@@ -89,61 +100,64 @@ const BookingComponent: React.FC<BookingProps> = ({ tour }) => {
 
             <h2 className="text-xl font-bold mb-2">Tickets</h2>
             <div className="mb-4">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-4">
                     <label className="text-lg mr-2">Adult ${tour.price_per_day}</label>
                     <div className="ticket-counter flex flex-row items-center">
-                        <button className="ticket-button" onClick={() => decrement(setAdultTickets)}>-</button>
-                        <div className="ticket-number">{adultTickets}</div>
-                        <button className="ticket-button" onClick={() => increment(setAdultTickets)}>+</button>
+                        <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => decrement(setAdultTickets)}>-</button>
+                        <div className="ticket-number px-4">{adultTickets}</div>
+                        <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => increment(setAdultTickets)}>+</button>
                     </div>
                 </div>
 
-                <div className="flex items-center justify-between mb-2">
-                    <label className="text-lg mr-2">Child (+20%)</label>
+                <div className="flex items-center justify-between mb-4">
+                    <label className="text-lg mr-2">Child ${(tour.price_per_day * 0.2)+tour.price_per_day}</label>
                     <div className="ticket-counter flex flex-row items-center">
-                        <button className="ticket-button" onClick={() => decrement(setChildTickets)}>-</button>
-                        <div className="ticket-number">{childTickets}</div>
-                        <button className="ticket-button" onClick={() => increment(setChildTickets)}>+</button>
+                        <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => decrement(setChildTickets)}>-</button>
+                        <div className="ticket-number px-4">{childTickets}</div>
+                        <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => increment(setChildTickets)}>+</button>
                     </div>
                 </div>
 
-                <div className="flex items-center justify-between mb-2">
-                    <label className="text-lg mr-2">Senior (+10%)</label>
+                <div className="flex items-center justify-between mb-4">
+                    <label className="text-lg mr-2">Senior ${(tour.price_per_day * 0.1)+tour.price_per_day}</label>
                     <div className="ticket-counter flex flex-row items-center">
-                        <button className="ticket-button" onClick={() => decrement(setSeniorTickets)}>-</button>
-                        <div className="ticket-number">{seniorTickets}</div>
-                        <button className="ticket-button" onClick={() => increment(setSeniorTickets)}>+</button>
+                        <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => decrement(setSeniorTickets)}>-</button>
+                        <div className="ticket-number px-4">{seniorTickets}</div>
+                        <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => increment(setSeniorTickets)}>+</button>
                     </div>
                 </div>
             </div>
 
             <div className="mb-4">
-                <label className="text-lg mr-2">Additional Services:</label>
-                <label htmlFor="addServiceBooking" className="mr-2">
-                    <input
-                        id="addServiceBooking"
-                        type="checkbox"
-                        checked={addServicePerBooking}
-                        onChange={() => setAddServicePerBooking(!addServicePerBooking)}
-                        className="mr-1"
-                    />
-                    Add Service per booking
-                </label>
-                <label htmlFor="addServicePerson">
-                    <input
-                        id="addServicePerson"
-                        type="checkbox"
-                        checked={addServicePerPerson}
-                        onChange={() => setAddServicePerPerson(!addServicePerPerson)}
-                        className="mr-1"
-                    />
-                    Add Service per person
-                </label>
+                <label className="text-xl font-bold">Additional Services:</label>
+                <div className="flex flex-col gap-4 py-4">
+                    <label htmlFor="addServiceBooking" className="mr-2">
+                        <input
+                            id="addServiceBooking"
+                            type="checkbox"
+                            checked={addServicePerBooking}
+                            onChange={() => setAddServicePerBooking(!addServicePerBooking)}
+                            className="mr-1"
+                        />
+                        Add Service per booking
+                    </label>
+                    <label htmlFor="addServicePerson">
+                        <input
+                            id="addServicePerson"
+                            type="checkbox"
+                            checked={addServicePerPerson}
+                            onChange={() => setAddServicePerPerson(!addServicePerPerson)}
+                            className="mr-1"
+                        />
+                        Add Service per person
+                    </label>
+                </div>
+
             </div>
 
-            <p className="text-xl font-bold mb-2">Total Price: ${totalPrice}</p>
+            <p className="text-xl font-bold mb-4">Total Price: ${totalPrice}</p>
 
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button className="bg-orange hover:bg-light_orange font-bold py-2 px-4 rounded text-white" onClick={handleBookNowClick}>
                 Book Now
             </button>
         </div>

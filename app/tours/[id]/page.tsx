@@ -58,7 +58,7 @@ const TourPage: React.FC = () => {
 
             {/* Use TourGallery component */}
             <TourGallery pictures={tour.pictures} />
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row justify-between gap-8">
                 <div className="w-2/3">
                     {/* TourDetails */}
                     <TourDetails
@@ -67,6 +67,10 @@ const TourPage: React.FC = () => {
                         ageCategory={tour.age_category}
                         languages={tour.languages}
                     />
+
+                    <p>Description: {tour.description}</p>
+                    <p>Destinations: {tour.destinations.join(', ')}</p>
+                    <p>Attractions: {tour.attractions.join(', ')}</p>
                 </div>
 
                 <div className="w-1/3">
@@ -76,10 +80,6 @@ const TourPage: React.FC = () => {
             </div>
 
 
-            <p>Price per day: ${tour.price_per_day}</p>
-            <p>Description: {tour.description}</p>
-            <p>Destinations: {tour.destinations.join(', ')}</p>
-            <p>Attractions: {tour.attractions.join(', ')}</p>
         </div>
     );
 };
