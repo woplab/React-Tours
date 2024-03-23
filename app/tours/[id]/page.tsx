@@ -13,6 +13,7 @@ import TourOverview from '../../ui/tours/TourOverview';
 import TourHighlights from '../../ui/tours/TourHighlights';
 import WhatsIncluded from '../../ui/tours/WhatsIncluded';
 import Itinerary from '../../ui/tours/Itinerary';
+import AvailabilityCalendar from "../../ui/tours/AvailabilityCalendar";
 
 interface TourProps {
     id: number;
@@ -94,6 +95,9 @@ const TourPage: React.FC = () => {
 
                     {/* Use Itinerary component */}
                     <Itinerary itinerary={tour.itinerary} />
+
+                    {/* Use AvailabilityCalendar component */}
+                    <AvailabilityCalendar startDate={new Date(tour.start_date)} endDate={new Date(tour.end_date)} />
                 </div>
 
                 <div className="w-1/3 py-8">
