@@ -67,14 +67,28 @@ const BookingComponent: React.FC<BookingProps> = ({ tour }) => {
     };
 
     const handleBookNowClick = () => {
-        const message = `Number of adult tickets: ${adultTickets}\nNumber of child tickets: ${childTickets}\nNumber of senior tickets: ${seniorTickets}\nTotal Price: $${totalPrice}`;
+        let message = '<div style="text-align: center;">Tickets Booked:</div><br>';
+
+        if (adultTickets > 0) {
+            message += `<div>Adult Tickets: ${adultTickets}</div>`;
+        }
+        if (childTickets > 0) {
+            message += `<div>Child Tickets: ${childTickets}</div>`;
+        }
+        if (seniorTickets > 0) {
+            message += `<div>Senior Tickets: ${seniorTickets}</div>`;
+        }
+
+        message += `<div style="font-weight: bold; padding-top: 20px;">Total Price: $${totalPrice}</div>`;
+
         Swal.fire({
             title: 'Booking Information',
-            text: message,
+            html: message,
             icon: 'info',
             confirmButtonText: 'OK'
         });
     };
+
 
     return (
         <div className="container mx-auto px-4 py-6 bg-white rounded-lg shadow-lg">
@@ -102,27 +116,27 @@ const BookingComponent: React.FC<BookingProps> = ({ tour }) => {
             <div className="mb-4">
                 <div className="flex items-center justify-between mb-4">
                     <label className="text-lg mr-2">Adult ${tour.price_per_day}</label>
-                    <div className="ticket-counter flex flex-row items-center">
+                    <div className="ticket-counter flex flex-row items-center justify-between">
                         <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => decrement(setAdultTickets)}>-</button>
-                        <div className="ticket-number px-4">{adultTickets}</div>
+                        <div className="ticket-number text-center w-8">{adultTickets}</div>
                         <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => increment(setAdultTickets)}>+</button>
                     </div>
                 </div>
 
                 <div className="flex items-center justify-between mb-4">
                     <label className="text-lg mr-2">Child ${(tour.price_per_day * 0.2)+tour.price_per_day}</label>
-                    <div className="ticket-counter flex flex-row items-center">
+                    <div className="ticket-counter flex flex-row items-center justify-between">
                         <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => decrement(setChildTickets)}>-</button>
-                        <div className="ticket-number px-4">{childTickets}</div>
+                        <div className="ticket-number text-center w-8">{childTickets}</div>
                         <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => increment(setChildTickets)}>+</button>
                     </div>
                 </div>
 
                 <div className="flex items-center justify-between mb-4">
                     <label className="text-lg mr-2">Senior ${(tour.price_per_day * 0.1)+tour.price_per_day}</label>
-                    <div className="ticket-counter flex flex-row items-center">
+                    <div className="ticket-counter flex flex-row items-center justify-between">
                         <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => decrement(setSeniorTickets)}>-</button>
-                        <div className="ticket-number px-4">{seniorTickets}</div>
+                        <div className="ticket-number text-center w-8">{seniorTickets}</div>
                         <button className="ticket-button bg-dark_blue px-4 rounded text-white text-center" onClick={() => increment(setSeniorTickets)}>+</button>
                     </div>
                 </div>
@@ -137,7 +151,7 @@ const BookingComponent: React.FC<BookingProps> = ({ tour }) => {
                             type="checkbox"
                             checked={addServicePerBooking}
                             onChange={() => setAddServicePerBooking(!addServicePerBooking)}
-                            className="mr-1"
+                            className="mr-1 h-3 w-3"
                         />
                         Add Service per booking
                     </label>
@@ -147,7 +161,7 @@ const BookingComponent: React.FC<BookingProps> = ({ tour }) => {
                             type="checkbox"
                             checked={addServicePerPerson}
                             onChange={() => setAddServicePerPerson(!addServicePerPerson)}
-                            className="mr-1"
+                            className="mr-1 h-3 w-3"
                         />
                         Add Service per person
                     </label>

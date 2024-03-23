@@ -8,7 +8,11 @@ import TourShare from '../../ui/tours/TourShare';
 import TourGallery from '../../ui/tours/TourGallery';
 import TourDetails from '../../ui/tours/TourDetails';
 import Breadcrumbs from '../../ui/tours/Breadcrumbs';
-import BookingComponent  from '../../ui/tours/Booking';
+import BookingComponent from '../../ui/tours/Booking';
+import TourOverview from '../../ui/tours/TourOverview';
+import TourHighlights from '../../ui/tours/TourHighlights';
+import WhatsIncluded from '../../ui/tours/WhatsIncluded';
+import Itinerary from '../../ui/tours/Itinerary';
 
 interface TourProps {
     id: number;
@@ -16,6 +20,7 @@ interface TourProps {
     price_per_day: number;
     description: string;
     duration: string;
+    listing: string[];
     group_size: number;
     age_category: string;
     languages: string[];
@@ -24,6 +29,9 @@ interface TourProps {
     attractions: string[];
     start_date: string;
     end_date: string;
+    whatsIncluded: string[];
+    whatsNotIncluded: string[];
+    itinerary: string[];
 }
 
 const TourPage: React.FC = () => {
@@ -42,13 +50,12 @@ const TourPage: React.FC = () => {
 
     return (
         <div className="container mx-auto py-8 px-8">
-
             {/* Breadcrumbs */}
             <Breadcrumbs tourName={tour.name} />
 
-            <h1 className="text-2xl text-dark_blue font-bold ">{tour.name}</h1>
+            <h1 className="text-2xl text-dark_blue font-bold">{tour.name}</h1>
 
-            <div className='flex flex-row justify-between'>
+            <div className="flex flex-row justify-between">
                 {/* TourRating */}
                 <TourRating />
 
@@ -58,6 +65,7 @@ const TourPage: React.FC = () => {
 
             {/* Use TourGallery component */}
             <TourGallery pictures={tour.pictures} />
+
             <div className="flex flex-row justify-between gap-8">
                 <div className="w-2/3">
                     {/* TourDetails */}
@@ -68,18 +76,31 @@ const TourPage: React.FC = () => {
                         languages={tour.languages}
                     />
 
-                    <p>Description: {tour.description}</p>
-                    <p>Destinations: {tour.destinations.join(', ')}</p>
-                    <p>Attractions: {tour.attractions.join(', ')}</p>
+                    {/* Use TourOverview component */}
+                    <TourOverview
+                        description={tour.description}
+                        destinations={tour.destinations}
+                        attractions={tour.attractions}
+                    />
+
+                    {/* Use TourHighlights component */}
+                    <TourHighlights listing={tour.listing} />
+
+                    {/* Use WhatsIncluded component */}
+                    <WhatsIncluded
+                        included={tour.whatsIncluded}
+                        notIncluded={tour.whatsNotIncluded}
+                    />
+
+                    {/* Use Itinerary component */}
+                    <Itinerary itinerary={tour.itinerary} />
                 </div>
 
-                <div className="w-1/3">
+                <div className="w-1/3 py-8">
                     {/* Booking */}
                     <BookingComponent tour={tour} />
                 </div>
             </div>
-
-
         </div>
     );
 };
