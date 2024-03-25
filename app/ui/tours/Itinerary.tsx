@@ -20,7 +20,7 @@ const Itinerary: React.FC<ItineraryProps> = ({ itinerary }) => {
     };
 
     return (
-        <div className="my-8">
+        <div className="md:my-8 mt-8">
             <h2 className="text-2xl font-bold">Itinerary</h2>
             <div className="">
                 {itinerary.map((day, index) => (

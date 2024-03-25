@@ -108,10 +108,6 @@ a:hover {
   cursor: pointer;
 }
 
-body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
-  padding-right: 0px !important;
-}
-
 .availability {
   background-color: orange !important;
   color: white !important;
@@ -128,6 +124,12 @@ abbr:where([title]){
 .react-calendar__tile:disabled{
   background-color: #fff!important;
 }
+
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){
+  overflow: auto!important;
+  padding-right: 0px !important;
+}
+
 
 
 
