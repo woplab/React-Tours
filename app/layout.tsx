@@ -1,3 +1,5 @@
+// app\layout.tsx
+
 // @ts-ignore
 import type { Metadata } from "next";
 // @ts-ignore

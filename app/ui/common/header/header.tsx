@@ -30,7 +30,14 @@ const Header: React.FC = () => {
             <div className="container mx-auto flex justify-between items-center py-4 px-8">
                 <div className="flex justify-between w-full lg:w-auto items-center space-x-4 gap-20">
                     <Link className="text-xl font-bold" href="/">
-                        <Image width="100" height="100" src={"/logo.png"} alt={"logo"} />
+                        <Image
+                            width={100}
+                            height={100}
+                            src={"/logo.png"}
+                            alt={"logo"}
+                            // Додано стилі для Image
+                            className="w-24 h-16"
+                        />
                     </Link>
 
                     {/* Burger menu icon */}
