@@ -1,4 +1,3 @@
-// app/tours/Filters.tsx
 import React, { useState, useEffect } from 'react';
 
 interface Tour {

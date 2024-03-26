@@ -2,9 +2,9 @@
 'use client';
 import React, { useState } from 'react';
 import toursData from '../../public/data/tours/tours.json';
-import TourCard from './TourCard'; // Component for displaying a single tour
-import Filters from './Filters'; // Component for filters
-import Pagination from './Pagination'; // Component for pagination
+import TourCard from '../ui/tours/TourCard'; // Component for displaying a single tour
+import Filters from '../ui/tours/Filters'; // Component for filters
+import Pagination from '../ui/tours/Pagination'; // Component for pagination
 
 interface Tour {
     id: number;
@@ -93,7 +93,7 @@ function Page() {
                         placeholder="Search tours..."
                         value={searchTerm}
                         onChange={handleSearchChange}
-                        className="p-2 border border-gray-300 rounded-md w-full"
+                        className="p-2 border border-light_gray2 rounded-md w-full "
                     />
                 </div>
                 <div className="grid grid-cols-1">

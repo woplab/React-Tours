@@ -20,7 +20,7 @@
       "age_category": "Adults",
       "languages": ["English", "Spanish"],
       "pictures": ["/assets/tours-images/city_explorer1.png", "/assets/tours-images/city_explorer2.jpg", "/assets/tours-images/city_explorer3.jpg", "/assets/tours-images/mountain_trek1.jpg"],
-      "destinations": ["Paris", "Singapore", "Roma", "Bangkok", "Bali", "Phuket"],
+      "destinations": ["Paris", "Singapore", "Roma"],
       "attractions": ["Eiffel Tower", "Gardens by the Bay", "Colosseum", "Grand Palace", "Maya Bay"],
       "start_date": "2024-06-01",
       "end_date": "2024-06-03",
