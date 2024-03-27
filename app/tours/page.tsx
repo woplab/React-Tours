@@ -1,6 +1,5 @@
-// app/tours/page.tsx
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import toursData from '../../public/data/tours/tours.json';
 import TourCard from '../ui/tours/TourCard'; // Component for displaying a single tour
 import Filters from '../ui/tours/Filters'; // Component for filters
@@ -27,7 +26,6 @@ interface Tour {
 
 function Page() {
     const [tours, setTours] = useState<Tour[]>(toursData.tours);
-    const [searchTerm, setSearchTerm] = useState('');
     const [filters, setFilters] = useState({
         price_per_day: '',
         duration: '',
@@ -40,19 +38,13 @@ function Page() {
     const [currentPage, setCurrentPage] = useState(1);
     const [toursPerPage] = useState(6); // Number of tours per page
 
-    // Handle search input change
-    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(event.target.value);
-    };
-
     // Handle filtering change
     const handleFilterChange = (filterName: string, value: string) => {
         setFilters({ ...filters, [filterName]: value });
     };
 
-    // Filter tours based on search term and filters
+    // Filter tours based on filters
     const filteredTours = tours.filter((tour) => {
-        const searchTermMatch = tour.name.toLowerCase().includes(searchTerm.toLowerCase());
         const priceMatch = !filters.price_per_day || tour.price_per_day <= parseInt(filters.price_per_day);
         const durationMatch = !filters.duration || tour.duration === filters.duration;
         const groupSizeMatch = !filters.group_size || tour.group_size === parseInt(filters.group_size);
@@ -62,7 +54,6 @@ function Page() {
         const attractionsMatch = !filters.attractions || tour.attractions.includes(filters.attractions);
 
         return (
-            searchTermMatch &&
             priceMatch &&
             durationMatch &&
             groupSizeMatch &&
@@ -72,6 +63,14 @@ function Page() {
             attractionsMatch
         );
     });
+
+    // Update currentPage if it exceeds the available pages after filtering
+    useEffect(() => {
+        const maxPage = Math.ceil(filteredTours.length / toursPerPage);
+        if (currentPage > maxPage) {
+            setCurrentPage(maxPage);
+        }
+    }, [filteredTours, toursPerPage, currentPage]);
 
     // Pagination
     const indexOfLastTour = currentPage * toursPerPage;
@@ -87,15 +86,6 @@ function Page() {
                 <Filters tours={tours} onChange={handleFilterChange} />
             </div>
             <div className="w-3/4">
-                <div className="flex justify-between items-center mb-4">
-                    <input
-                        type="text"
-                        placeholder="Search tours..."
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                        className="p-2 border border-light_gray2 rounded-md w-full "
-                    />
-                </div>
                 <div className="grid grid-cols-1">
                     {currentTours.map((tour) => (
                         <TourCard key={tour.id} tour={tour} />

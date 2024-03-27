@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 
 interface Tour {
     price_per_day: number;
@@ -25,7 +26,7 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange }) => {
                 values.add(tour[field].toString());
             }
         });
-        return Array.from(values);
+        return Array.from(values).map(value => ({ value, label: value }));
     };
 
     // Calculate min and max prices
@@ -55,76 +56,77 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange }) => {
         setCurrentPrice(maxPrice.toString());
     }, [maxPrice]);
 
+    // Options with 'All' for select filters
+    const allOption = { value: '', label: 'All' };
+    const durationOptions = [allOption, ...uniqueValues('duration')];
+    const groupSizeOptions = [allOption, ...uniqueValues('group_size')];
+    const ageCategoryOptions = [allOption, ...uniqueValues('age_category')];
+    const languagesOptions = [allOption, ...uniqueValues('languages')];
+    const destinationsOptions = [allOption, ...uniqueValues('destinations')];
+    const attractionsOptions = [allOption, ...uniqueValues('attractions')];
+
     return (
-        <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold">Filters</h3>
-            <span className="text-gray-600">Current price: {formatPrice(parseFloat(currentPrice))}</span>
-            <div className="flex justify-between">
-                <span>{formatPrice(minPrice)}</span>
-                <span>{formatPrice(maxPrice)}</span>
+        <div className="flex flex-col border-light_gray border rounded-lg">
+            <div className="bg-orange p-4 rounded-t-lg">
+                <h3 className="text-lg text-white font-semibold mb-2">Filters</h3>
+                <span className="text-white">Current price: {formatPrice(parseFloat(currentPrice))}</span>
+                <div className="flex justify-between">
+                    <span className="text-white font-bold">{formatPrice(minPrice)}</span>
+                    <span className="text-white font-bold">{formatPrice(maxPrice)}</span>
+                </div>
+                <input
+                    type="range"
+                    min={minPrice.toString()}
+                    max={maxPrice.toString()}
+                    value={currentPrice}
+                    onChange={(e) => handlePriceChange(e.target.value)}
+                    className="border border-gray-300 rounded-md w-full bg-white"
+                />
             </div>
-            <input
-                type="range"
-                min={minPrice.toString()}
-                max={maxPrice.toString()}
-                value={currentPrice}
-                onChange={(e) => handlePriceChange(e.target.value)}
-                className="border border-gray-300 rounded-md"
-            />
-            <select
-                onChange={(e) => onChange('duration', e.target.value)}
-                className="p-2 border border-gray-300 rounded-md"
-            >
-                <option value="">Duration</option>
-                {uniqueValues('duration').map(value => (
-                    <option key={value} value={value}>{value}</option>
-                ))}
-            </select>
-            <select
-                onChange={(e) => onChange('group_size', e.target.value)}
-                className="p-2 border border-gray-300 rounded-md"
-            >
-                <option value="">Group Size</option>
-                {uniqueValues('group_size').map(value => (
-                    <option key={value} value={value}>{value}</option>
-                ))}
-            </select>
-            <select
-                onChange={(e) => onChange('age_category', e.target.value)}
-                className="p-2 border border-gray-300 rounded-md"
-            >
-                <option value="">Age Category</option>
-                {uniqueValues('age_category').map(value => (
-                    <option key={value} value={value}>{value}</option>
-                ))}
-            </select>
-            <select
-                onChange={(e) => onChange('languages', e.target.value)}
-                className="p-2 border border-gray-300 rounded-md"
-            >
-                <option value="">Languages</option>
-                {uniqueValues('languages').map(value => (
-                    <option key={value} value={value}>{value}</option>
-                ))}
-            </select>
-            <select
-                onChange={(e) => onChange('destinations', e.target.value)}
-                className="p-2 border border-gray-300 rounded-md"
-            >
-                <option value="">Destinations</option>
-                {uniqueValues('destinations').map(value => (
-                    <option key={value} value={value}>{value}</option>
-                ))}
-            </select>
-            <select
-                onChange={(e) => onChange('attractions', e.target.value)}
-                className="p-2 border border-gray-300 rounded-md"
-            >
-                <option value="">Attractions</option>
-                {uniqueValues('attractions').map(value => (
-                    <option key={value} value={value}>{value}</option>
-                ))}
-            </select>
+            <div className="flex flex-col p-4 bg-white rounded-b-lg">
+                <h3 className="text-lg font-semibold">Duration</h3>
+                <Select
+                    className="mb-4"
+                    options={durationOptions}
+                    onChange={(selectedOption) => selectedOption && onChange('duration', selectedOption.value as string)}
+                    instanceId="duration-select"
+                />
+                <h3 className="text-lg font-semibold ">Group Size</h3>
+                <Select
+                    className="mb-4"
+                    options={groupSizeOptions}
+                    onChange={(selectedOption) => selectedOption && onChange('group_size', selectedOption.value as string)}
+                    instanceId="group-size-select"
+                />
+                <h3 className="text-lg font-semibold">Age Category</h3>
+                <Select
+                    className="mb-4"
+                    options={ageCategoryOptions}
+                    onChange={(selectedOption) => selectedOption && onChange('age_category', selectedOption.value as string)}
+                    instanceId="age-category-select"
+                />
+                <h3 className="text-lg font-semibold">Languages</h3>
+                <Select
+                    className="mb-4"
+                    options={languagesOptions}
+                    onChange={(selectedOption) => selectedOption && onChange('languages', selectedOption.value as string)}
+                    instanceId="languages-select"
+                />
+                <h3 className="text-lg font-semibold">Destinations</h3>
+                <Select
+                    className="mb-4"
+                    options={destinationsOptions}
+                    onChange={(selectedOption) => selectedOption && onChange('destinations', selectedOption.value as string)}
+                    instanceId="destinations-select"
+                />
+                <h3 className="text-lg font-semibold">Attractions</h3>
+                <Select
+                    className="mb-4"
+                    options={attractionsOptions}
+                    onChange={(selectedOption) => selectedOption && onChange('attractions', selectedOption.value as string)}
+                    instanceId="attractions-select"
+                />
+            </div>
         </div>
     );
 };

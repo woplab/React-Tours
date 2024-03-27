@@ -2,6 +2,7 @@ import React from 'react';
 import { differenceInDays, format } from 'date-fns';
 import { FaCalendarAlt } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from "next/image";
 
 interface Tour {
     id: number;
@@ -39,9 +40,11 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
     return (
         <div className="border border-light_gray2 rounded-lg p-4 mb-8 flex bg-white">
             <div className="w-1/3 pr-4 flex flex-col justify-between">
-                <img
+                <Image
                     src={tour.pictures[0]}
                     alt={tour.name}
+                    height="200"
+                    width="300"
                     className="w-full h-40 object-cover mb-4 rounded-lg"
                 />
                 <div className="flex flex-wrap items-center">{

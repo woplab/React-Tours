@@ -1,4 +1,3 @@
-// app/tours/Pagination.tsx
 import React from 'react';
 
 interface PaginationProps {
@@ -15,12 +14,19 @@ const Pagination: React.FC<PaginationProps> = ({ toursPerPage, totalTours, curre
         pageNumbers.push(i);
     }
 
+    // Handle page change
+    const handlePageChange = (pageNumber: number) => {
+        paginate(pageNumber);
+        // Scroll to top of the page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <nav className="mt-4">
-            <ul className="pagination">
+            <ul className="pagination flex justify-center items-center gap-2">
                 {pageNumbers.map((number) => (
                     <li key={number} className={currentPage === number ? 'active' : ''}>
-                        <button onClick={() => paginate(number)} className="btn-pagination">
+                        <button onClick={() => handlePageChange(number)} className={`bg-orange hover:bg-light_orange text-white font-bold rounded-full h-9 w-9 ${currentPage === number ? 'bg-light_orange' : ''}`}>
                             {number}
                         </button>
                     </li>
