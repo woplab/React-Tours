@@ -9,7 +9,7 @@ interface Tour {
     id: number;
     name: string;
     price_per_day: number;
-    description: string; // Changed from listing
+    description: string;
     duration: string;
     group_size: number;
     age_category: string;
@@ -40,7 +40,24 @@ function Page() {
 
     // Handle filtering change
     const handleFilterChange = (filterName: string, value: string) => {
+        setCurrentPage(1); // Reset to first page when filters change
         setFilters({ ...filters, [filterName]: value });
+    };
+
+    // Reset all filters and pagination
+    const handleResetFilters = () => {
+        setCurrentPage(1); // Reset to first page
+        setFilters({
+            price_per_day: '',
+            duration: '',
+            group_size: '',
+            age_category: '',
+            languages: '',
+            destinations: '',
+            attractions: '',
+        });
+        // Scroll to top of the page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     // Filter tours based on filters
@@ -81,25 +98,32 @@ function Page() {
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
     return (
-        <div className="container mx-auto py-8 flex">
-            <div className="w-1/4 pr-4">
-                <Filters tours={tours} onChange={handleFilterChange} />
+        <div className="container mx-auto py-8 px-8 flex lg:flex-row flex-col lg:gap-0 gap-8">
+            <div className="lg:w-1/4 w-full lg:pr-4">
+                <Filters tours={tours} onChange={handleFilterChange} onReset={handleResetFilters} />
             </div>
-            <div className="w-3/4">
-                <div className="grid grid-cols-1">
-                    {currentTours.map((tour) => (
-                        <TourCard key={tour.id} tour={tour} />
-                    ))}
-                </div>
-                <Pagination
-                    toursPerPage={toursPerPage}
-                    totalTours={filteredTours.length}
-                    paginate={paginate}
-                    currentPage={currentPage}
-                />
+            <div className="lg:w-3/4 w-full">
+                {filteredTours.length === 0 ? (
+                    <div className="text-center text-gray-600">No tours found.</div>
+                ) : (
+                    <>
+                        <div className="grid grid-cols-1">
+                            {currentTours.map((tour) => (
+                                <TourCard key={tour.id} tour={tour} />
+                            ))}
+                        </div>
+                        <Pagination
+                            toursPerPage={toursPerPage}
+                            totalTours={filteredTours.length}
+                            paginate={paginate}
+                            currentPage={currentPage}
+                        />
+                    </>
+                )}
             </div>
         </div>
     );
 }
 
 export default Page;
+

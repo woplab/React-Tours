@@ -25,8 +25,12 @@ const Pagination: React.FC<PaginationProps> = ({ toursPerPage, totalTours, curre
         <nav className="mt-4">
             <ul className="pagination flex justify-center items-center gap-2">
                 {pageNumbers.map((number) => (
-                    <li key={number} className={currentPage === number ? 'active' : ''}>
-                        <button onClick={() => handlePageChange(number)} className={`bg-orange hover:bg-light_orange text-white font-bold rounded-full h-9 w-9 ${currentPage === number ? 'bg-light_orange' : ''}`}>
+
+                    <li key={number}>
+                        <button
+                            onClick={() => handlePageChange(number)}
+                            className={`hover:bg-light_orange text-white font-bold rounded-full h-9 w-9 ${currentPage === number ? 'bg-light_orange' : 'bg-orange'}`}
+                        >
                             {number}
                         </button>
                     </li>
