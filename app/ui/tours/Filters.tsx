@@ -78,7 +78,14 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
     const groupSizeOptions = [allOption, ...uniqueValues('group_size')];
     const ageCategoryOptions = [allOption, ...uniqueValues('age_category')];
     const languagesOptions = [allOption, ...uniqueValues('languages')];
-    const destinationsOptions = [allOption, ...uniqueValues('destinations')];
+
+    // Unique destinations from all tours
+    const destinationsSet = new Set<string>();
+    tours.forEach(tour => {
+        tour.destinations.forEach(destination => destinationsSet.add(destination));
+    });
+    const destinationsOptions = [allOption, ...Array.from(destinationsSet).map(value => ({ value, label: value }))];
+
     const attractionsOptions = [allOption, ...uniqueValues('attractions')];
 
     // Custom styles for Select component
@@ -108,11 +115,12 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
         }),
     };
 
+    // State for showing/hiding filters
+    const [showFilters, setShowFilters] = useState<boolean>(false);
+
     const handleCloseFilters = () => {
         setShowFilters(false);
     };
-
-    const [showFilters, setShowFilters] = useState<boolean>(false);
 
     return (
         <div className="flex flex-col border-light_gray border rounded-lg relative">

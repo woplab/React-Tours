@@ -7,7 +7,6 @@ import TourRating from '../../ui/tours/TourRating';
 import TourShare from '../../ui/tours/TourShare';
 import TourGallery from '../../ui/tours/TourGallery';
 import TourDetails from '../../ui/tours/TourDetails';
-import Breadcrumbs from '../../ui/tours/Breadcrumbs';
 import BookingComponent from '../../ui/tours/Booking';
 import TourOverview from '../../ui/tours/TourOverview';
 import TourHighlights from '../../ui/tours/TourHighlights';
@@ -54,9 +53,6 @@ const TourPage: React.FC = () => {
 
     return (
         <div className="container mx-auto py-8 px-8">
-            {/* Breadcrumbs */}
-            <Breadcrumbs tourName={tour.name} />
-
             <h1 className="text-2xl text-dark_blue font-bold">{tour.name}</h1>
 
             <div className="flex sm:flex-row flex-col justify-between">

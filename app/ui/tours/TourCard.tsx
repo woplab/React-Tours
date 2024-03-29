@@ -38,8 +38,8 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
     const durationInDays = differenceInDays(endDate, startDate) + 1;
 
     return (
-        <div className="border border-light_gray2 rounded-lg p-4 mb-8 flex bg-white">
-            <div className="w-1/3 pr-4 flex flex-col justify-between">
+        <div className="border border-light_gray2 rounded-lg p-4 mb-8 flex md:flex-row flex-col bg-white gap-4">
+            <div className="md:w-1/3 w-full pr-4 flex flex-col justify-between">
                 <Image
                     src={tour.pictures[0]}
                     alt={tour.name}
@@ -53,7 +53,7 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
                     ))
                 }</div>
             </div>
-            <div className="w-1/3">
+            <div className="md:w-1/3 w-full">
                 <p className="text-gray-600 mb-2 text-sm">{tour.duration} | {tour.group_size} guests
                     | {tour.age_category}</p>
                 <div className="text-gray-600 mb-2 text-sm">{tour.languages.join(', ')}</div>
@@ -61,16 +61,16 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
                 <p className="text-gray-600 text-lg font-bold mb-2">${tour.price_per_day} per day</p>
                 <p className="text-gray-600 ">{truncateDescription(tour.description, 100)}</p>
             </div>
-            <div className="w-1/3 flex flex-col justify-between items-center">
+            <div className="md:w-1/3 w-full flex md:flex-col md:flex-row justify-between items-center">
                 <div>
-                    <div className="flex items-center">
+                    <div className="md:flex hidden items-center">
                         <FaCalendarAlt className="inline-block mr-2 h-5 w-5" />
                         <p className="font-bold text-lg">Start Date:</p>
                     </div>
                     <p>{format(startDate, 'MMMM dd, yyyy')}</p>
                 </div>
                 <div>
-                    <div className="flex items-center">
+                    <div className="md:flex hidden items-center">
                         <FaCalendarAlt className="inline-block mr-2 h-5 w-5" />
                         <p className="font-bold text-lg">End Date:</p>
                     </div>

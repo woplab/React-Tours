@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "next/link";
 
 const HeroSection: React.FC = () => {
     return (
@@ -12,9 +13,9 @@ const HeroSection: React.FC = () => {
                         on your favorite Destination
                     </h1>
                     <p className="text-lg">Limited time offer, dont miss the opportunity</p>
-                    <button className="bg-white hover:bg-light_gray text-orange font-bold py-4 px-6 rounded">
+                    <Link href={"/tours/"} className="bg-white hover:bg-light_gray text-orange font-bold py-4 px-6 rounded">
                         Book Now
-                    </button>
+                    </Link>
                 </div>
                 <div className="w-1/2 md:block hidden h-[500px] max-h-[500px] rounded-r-xl" style={{ background: `url("/hero-bg.png") left center/cover no-repeat` }}>
                 </div>

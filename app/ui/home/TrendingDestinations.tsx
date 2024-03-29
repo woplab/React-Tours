@@ -1,4 +1,3 @@
-// @ts-ignore
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import toursData from '../../../public/data/tours/tours-locations.json';
@@ -16,8 +15,8 @@ const TrendingDestinations: React.FC = () => {
     const [tours, setTours] = useState<Tour[]>([]);
 
     useEffect(() => {
-            setTours(toursData.tours);
-            setLoading(false);
+        setTours(toursData.tours);
+        setLoading(false);
     }, []);
 
     const Skeleton: React.FC = () => {
@@ -32,11 +31,18 @@ const TrendingDestinations: React.FC = () => {
         );
     };
 
+    // Handle click on a destination
+    // Handle click on a destination
+    const handleDestinationClick = (destination: string) => {
+        // Redirect to tours page with destination filter
+        window.location.href = `/tours?destinations=${encodeURIComponent(destination)}`;
+    };
+
     return (
         <div className="container mx-auto py-8 px-8">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold text-dark_blue">Trending Destinations</h2>
-                <Link className="text-dark_blue" href="/trending-destinations" passHref>
+                <Link href="/tours" passHref>
                     See All
                 </Link>
             </div>
@@ -48,9 +54,20 @@ const TrendingDestinations: React.FC = () => {
                 ) : (
                     tours.map((tour: Tour) => (
                         <div key={tour.id} className="overflow-hidden flex flex-col items-left">
-                            <Image src={tour.image} alt={tour.name} width='190' height='210' className="w-48 h-48 object-cover mb-2 rounded-lg" />
-                            <h3 className="text-orange text-sm mb-1">{tour.name}</h3>
-                            <p className="text-dark_blue text-sm">{tour.description}</p>
+                            <button
+                                onClick={() => handleDestinationClick(tour.name)} // Pass destination name on click
+                                className="focus:outline-none"
+                            >
+                                <Image
+                                    src={tour.image}
+                                    alt={tour.name}
+                                    width='190'
+                                    height='210'
+                                    className="w-48 h-48 object-cover mb-2 rounded-lg"
+                                />
+                                <h3 className="text-orange text-sm mb-1">{tour.name}</h3>
+                                <p className="text-dark_blue text-sm">{tour.description}</p>
+                            </button>
                         </div>
                     ))
                 )}

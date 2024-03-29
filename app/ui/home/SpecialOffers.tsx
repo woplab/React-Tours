@@ -31,7 +31,7 @@ const SpecialOffers: React.FC<Props> = ({ tours }) => {
         <div className="container mx-auto py-8 px-8">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold text-dark_blue">Special Offers</h2>
-                <Link className="text-dark_blue" href="/special-offers">
+                <Link className="text-dark_blue" href={"/tours"}>
                     See All
                 </Link>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from "next/image";
+import Link from "next/link";
 
 const TravelInfo: React.FC = () => {
     return (
@@ -11,9 +12,9 @@ const TravelInfo: React.FC = () => {
                     <p className="text-lg lg:text-xl text-white mb-8 lg:mb-10">
                         Traveling under your own power and at your own pace, youll connect more meaningfully with your destination and have more fun!
                     </p>
-                    <button className="bg-white hover:bg-light_gray text-orange font-bold py-4 px-6 rounded lg:block flex mx-auto">
+                    <Link href={"/tours/"} className="bg-white hover:bg-light_gray text-orange font-bold py-4 px-6 rounded lg:block flex mx-auto lg:w-1/2 w-full max-w-[385px]">
                         Explore Our Tours
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Right Section */}

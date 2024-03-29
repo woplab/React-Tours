@@ -4,6 +4,7 @@ import toursData from '../../public/data/tours/tours.json';
 import TourCard from '../ui/tours/TourCard'; // Component for displaying a single tour
 import Filters from '../ui/tours/Filters'; // Component for filters
 import Pagination from '../ui/tours/Pagination'; // Component for pagination
+import { useRouter } from 'next/navigation';
 
 interface Tour {
     id: number;
@@ -25,6 +26,8 @@ interface Tour {
 }
 
 function Page() {
+    // Inside the Page component
+    const [selectedDestinations, setSelectedDestinations] = useState<string>('');
     const [tours, setTours] = useState<Tour[]>(toursData.tours);
     const [filters, setFilters] = useState({
         price_per_day: '',
@@ -37,6 +40,7 @@ function Page() {
     });
     const [currentPage, setCurrentPage] = useState(1);
     const [toursPerPage] = useState(6); // Number of tours per page
+    const router = useRouter();
 
     // Handle filtering change
     const handleFilterChange = (filterName: string, value: string) => {
@@ -70,6 +74,7 @@ function Page() {
         const destinationsMatch = !filters.destinations || tour.destinations.includes(filters.destinations);
         const attractionsMatch = !filters.attractions || tour.attractions.includes(filters.attractions);
 
+
         return (
             priceMatch &&
             durationMatch &&
@@ -89,6 +94,15 @@ function Page() {
         }
     }, [filteredTours, toursPerPage, currentPage]);
 
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const destinationsParam = urlParams.get('destinations');
+        if (destinationsParam) {
+            setFilters({ ...filters, destinations: destinationsParam });
+            setSelectedDestinations(destinationsParam);
+        }
+    }, []);
+
     // Pagination
     const indexOfLastTour = currentPage * toursPerPage;
     const indexOfFirstTour = indexOfLastTour - toursPerPage;
@@ -98,32 +112,33 @@ function Page() {
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
     return (
-        <div className="container mx-auto py-8 px-8 flex lg:flex-row flex-col lg:gap-0 gap-8">
-            <div className="lg:w-1/4 w-full lg:pr-4">
-                <Filters tours={tours} onChange={handleFilterChange} onReset={handleResetFilters} />
-            </div>
-            <div className="lg:w-3/4 w-full">
-                {filteredTours.length === 0 ? (
-                    <div className="text-center text-gray-600">No tours found.</div>
-                ) : (
-                    <>
-                        <div className="grid grid-cols-1">
-                            {currentTours.map((tour) => (
-                                <TourCard key={tour.id} tour={tour} />
-                            ))}
-                        </div>
-                        <Pagination
-                            toursPerPage={toursPerPage}
-                            totalTours={filteredTours.length}
-                            paginate={paginate}
-                            currentPage={currentPage}
-                        />
-                    </>
-                )}
+        <div>
+            <div className="container mx-auto py-8 px-8 flex lg:flex-row flex-col lg:gap-0 gap-8">
+                <div className="lg:w-1/4 w-full lg:pr-4">
+                    <Filters tours={tours} onChange={handleFilterChange} onReset={handleResetFilters}/>
+                </div>
+                <div className="lg:w-3/4 w-full">
+                    {filteredTours.length === 0 ? (
+                        <div className="text-center text-gray-600">No tours found.</div>
+                    ) : (
+                        <>
+                            <div className="grid grid-cols-1">
+                                {currentTours.map((tour) => (
+                                    <TourCard key={tour.id} tour={tour}/>
+                                ))}
+                            </div>
+                            <Pagination
+                                toursPerPage={toursPerPage}
+                                totalTours={filteredTours.length}
+                                paginate={paginate}
+                                currentPage={currentPage}
+                            />
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     );
 }
 
 export default Page;
-
