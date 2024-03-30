@@ -31,13 +31,6 @@ const TrendingDestinations: React.FC = () => {
         );
     };
 
-    // Handle click on a destination
-    // Handle click on a destination
-    const handleDestinationClick = (destination: string) => {
-        // Redirect to tours page with destination filter
-        window.location.href = `/tours?destinations=${encodeURIComponent(destination)}`;
-    };
-
     return (
         <div className="container mx-auto py-8 px-8">
             <div className="flex justify-between items-center mb-4">
@@ -54,20 +47,17 @@ const TrendingDestinations: React.FC = () => {
                 ) : (
                     tours.map((tour: Tour) => (
                         <div key={tour.id} className="overflow-hidden flex flex-col items-left">
-                            <button
-                                onClick={() => handleDestinationClick(tour.name)} // Pass destination name on click
-                                className="focus:outline-none"
-                            >
-                                <Image
-                                    src={tour.image}
-                                    alt={tour.name}
-                                    width='190'
-                                    height='210'
-                                    className="w-48 h-48 object-cover mb-2 rounded-lg"
-                                />
-                                <h3 className="text-orange text-sm mb-1">{tour.name}</h3>
-                                <p className="text-dark_blue text-sm">{tour.description}</p>
-                            </button>
+                            <Link href={`/tours?destinations=${encodeURIComponent(tour.name)}`} passHref>
+                                    <Image
+                                        src={tour.image}
+                                        alt={tour.name}
+                                        width='190'
+                                        height='210'
+                                        className="w-48 h-48 object-cover mb-2 rounded-lg"
+                                    />
+                                    <h3 className="text-orange text-sm mb-1">{tour.name}</h3>
+                                    <p className="text-dark_blue text-sm">{tour.description}</p>
+                            </Link>
                         </div>
                     ))
                 )}

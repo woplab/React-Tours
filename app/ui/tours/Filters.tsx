@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 
 interface Tour {
@@ -121,6 +121,21 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
     const handleCloseFilters = () => {
         setShowFilters(false);
     };
+
+    // Update selectedDestinations when URL changes
+    useEffect(() => {
+        const queryParams = new URLSearchParams(window.location.search);
+        const urlDestinations = queryParams.get('destinations');
+        const urlAttractions = queryParams.get('attractions');
+
+        if (urlDestinations) {
+            setSelectedDestinations(urlDestinations);
+        }
+
+        if (urlAttractions) {
+            setSelectedAttractions(urlAttractions);
+        }
+    }, []);
 
     return (
         <div className="flex flex-col border-light_gray border rounded-lg relative">

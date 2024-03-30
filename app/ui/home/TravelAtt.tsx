@@ -35,8 +35,8 @@ const TravelAtt: React.FC = () => {
         <div className="container mx-auto py-8 px-8">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold text-dark_blue">Trending Attractions</h2>
-                <Link className="text-dark_blue" href="/trending-destinations" passHref>
-                    See All
+                <Link href={'/tours'} passHref>
+                   See All
                 </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 pb-4">
@@ -48,13 +48,13 @@ const TravelAtt: React.FC = () => {
                 ) : (
                     // Иначе, отображаем карточки
                     tours.map((tour: Tour) => (
-                        <div key={tour.id} className="flex flex-row items-left gap-4">
+                        <Link href={`/tours?attractions=${encodeURIComponent(tour.name)}`} key={tour.id} className="flex flex-row items-left gap-4">
                             <Image src={tour.image} alt={tour.name} width="100" height="100" className="w-20 h-20 object-cover mb-2 rounded-lg" />
                             <div className="flex flex-col items-left justify-center">
                                 <h3 className="text-orange text-sm mb-1">{tour.name}</h3>
                                 <p className="text-dark_blue text-sm">{tour.description}</p>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 )}
             </div>

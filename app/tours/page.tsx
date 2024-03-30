@@ -1,10 +1,13 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../app/reducers';
+import { updateFilters, resetFilters } from '../../app/reducers/filtersSlice';
+import { setCurrentPage } from '../../app/reducers/paginationSlice';
 import toursData from '../../public/data/tours/tours.json';
-import TourCard from '../ui/tours/TourCard'; // Component for displaying a single tour
-import Filters from '../ui/tours/Filters'; // Component for filters
-import Pagination from '../ui/tours/Pagination'; // Component for pagination
-import { useRouter } from 'next/navigation';
+import TourCard from '../ui/tours/TourCard';
+import Filters from '../ui/tours/Filters';
+import Pagination from '../ui/tours/Pagination';
 
 interface Tour {
     id: number;
@@ -26,45 +29,37 @@ interface Tour {
 }
 
 function Page() {
-    // Inside the Page component
-    const [selectedDestinations, setSelectedDestinations] = useState<string>('');
-    const [tours, setTours] = useState<Tour[]>(toursData.tours);
-    const [filters, setFilters] = useState({
-        price_per_day: '',
-        duration: '',
-        group_size: '',
-        age_category: '',
-        languages: '',
-        destinations: '',
-        attractions: '',
-    });
-    const [currentPage, setCurrentPage] = useState(1);
-    const [toursPerPage] = useState(6); // Number of tours per page
-    const router = useRouter();
+    const dispatch = useDispatch();
+    const { filters, pagination } = useSelector((state: RootState) => state); // Get filters and pagination from Redux store
 
-    // Handle filtering change
+    useEffect(() => {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const url_destinations = urlParams.get('destinations');
+        const url_attractions = urlParams.get('attractions');
+        console.log(url_destinations, url_attractions);
+
+        if (url_destinations) {
+            dispatch(updateFilters({ destinations: url_destinations }));
+        }
+        if (url_attractions) {
+            dispatch(updateFilters({ attractions: url_attractions }));
+        }
+    }, [dispatch]);
+
     const handleFilterChange = (filterName: string, value: string) => {
-        setCurrentPage(1); // Reset to first page when filters change
-        setFilters({ ...filters, [filterName]: value });
+        dispatch(updateFilters({ [filterName]: value }));
+        dispatch(setCurrentPage(1)); // Reset to first page when filters change
     };
 
-    // Reset all filters and pagination
     const handleResetFilters = () => {
-        setCurrentPage(1); // Reset to first page
-        setFilters({
-            price_per_day: '',
-            duration: '',
-            group_size: '',
-            age_category: '',
-            languages: '',
-            destinations: '',
-            attractions: '',
-        });
-        // Scroll to top of the page
+        dispatch(resetFilters());
+        dispatch(setCurrentPage(1)); // Reset to first page when filters are reset
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    // Filter tours based on filters
+    const tours = toursData.tours;
+
     const filteredTours = tours.filter((tour) => {
         const priceMatch = !filters.price_per_day || tour.price_per_day <= parseInt(filters.price_per_day);
         const durationMatch = !filters.duration || tour.duration === filters.duration;
@@ -73,7 +68,6 @@ function Page() {
         const languagesMatch = !filters.languages || tour.languages.includes(filters.languages);
         const destinationsMatch = !filters.destinations || tour.destinations.includes(filters.destinations);
         const attractionsMatch = !filters.attractions || tour.attractions.includes(filters.attractions);
-
 
         return (
             priceMatch &&
@@ -86,36 +80,21 @@ function Page() {
         );
     });
 
-    // Update currentPage if it exceeds the available pages after filtering
-    useEffect(() => {
-        const maxPage = Math.ceil(filteredTours.length / toursPerPage);
-        if (currentPage > maxPage) {
-            setCurrentPage(maxPage);
-        }
-    }, [filteredTours, toursPerPage, currentPage]);
-
-    useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const destinationsParam = urlParams.get('destinations');
-        if (destinationsParam) {
-            setFilters({ ...filters, destinations: destinationsParam });
-            setSelectedDestinations(destinationsParam);
-        }
-    }, []);
-
-    // Pagination
-    const indexOfLastTour = currentPage * toursPerPage;
+    const toursPerPage = 6;
+    const indexOfLastTour = pagination.currentPage * toursPerPage;
     const indexOfFirstTour = indexOfLastTour - toursPerPage;
     const currentTours = filteredTours.slice(indexOfFirstTour, indexOfLastTour);
 
-    // Change page
-    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber: number) => {
+        dispatch(setCurrentPage(pageNumber));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     return (
         <div>
             <div className="container mx-auto py-8 px-8 flex lg:flex-row flex-col lg:gap-0 gap-8">
                 <div className="lg:w-1/4 w-full lg:pr-4">
-                    <Filters tours={tours} onChange={handleFilterChange} onReset={handleResetFilters}/>
+                    <Filters tours={tours} onChange={handleFilterChange} onReset={handleResetFilters} />
                 </div>
                 <div className="lg:w-3/4 w-full">
                     {filteredTours.length === 0 ? (
@@ -124,14 +103,14 @@ function Page() {
                         <>
                             <div className="grid grid-cols-1">
                                 {currentTours.map((tour) => (
-                                    <TourCard key={tour.id} tour={tour}/>
+                                    <TourCard key={tour.id} tour={tour} />
                                 ))}
                             </div>
                             <Pagination
                                 toursPerPage={toursPerPage}
                                 totalTours={filteredTours.length}
                                 paginate={paginate}
-                                currentPage={currentPage}
+                                currentPage={pagination.currentPage}
                             />
                         </>
                     )}

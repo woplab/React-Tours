@@ -2,13 +2,7 @@
 import Link from 'next/link';
 import React from 'react';
 import Image from "next/image";
-
-interface Tour {
-    id: number;
-    name: string;
-    description: string;
-    image: string;
-}
+import { Tour } from '../../models'; // Import the Tour type
 
 interface Props {
     tours: Tour[];
