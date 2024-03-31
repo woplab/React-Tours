@@ -11,7 +11,6 @@ const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
                                                                        startDate,
                                                                        endDate,
                                                                    }) => {
-    // Функція для створення масиву дат між початковою та кінцевою датами
     const dateRange = (start: Date, end: Date) => {
         const dates = [];
         let currentDate = new Date(start);
@@ -24,10 +23,8 @@ const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
         return dates;
     };
 
-    // Діапазон дат для позначення на календарі
     const markedDates = dateRange(startDate, endDate);
 
-    // Функція для визначення класу для позначення виділених дат
     const tileClassName = ({ date }: { date: Date }) =>
         markedDates.find((markedDate) => markedDate.toDateString() === date.toDateString())
             ? 'availability'
@@ -39,11 +36,11 @@ const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
             <Calendar
                 className="rounded-lg shadow-md border-0"
                 tileClassName={tileClassName}
-                locale="en-US" // Встановлюємо англійську мову
-                minDate={startDate} // Мінімальна дата
-                maxDate={endDate}   // Максимальна дата
-                defaultActiveStartDate={startDate} // Дата початку відображення календаря
-                value={startDate}   // Вибрана дата
+                locale="en-US"
+                minDate={startDate}
+                maxDate={endDate}
+                defaultActiveStartDate={startDate}
+                value={startDate}
             />
         </div>
     );

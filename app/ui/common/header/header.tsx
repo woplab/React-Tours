@@ -7,7 +7,7 @@ import getUserCurrencyCode from '../../../data/API-rates/getUserCurrencyCode';
 import Image from "next/image";
 
 const Header: React.FC = () => {
-    const exchangeRate = useExchangeRate(); // получаем обменный курс
+    const exchangeRate = useExchangeRate();
     const [userCurrencyCode, setUserCurrencyCode] = useState<string | null>(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -35,7 +35,6 @@ const Header: React.FC = () => {
                             height={100}
                             src={"/logo.png"}
                             alt={"logo"}
-                            // Додано стилі для Image
                             className="w-24 h-16"
                         />
                     </Link>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import faqData from '../../../public/data/tours/faq-data.json';
 
 const FAQ: React.FC = () => {
-    const [activeIndex, setActiveIndex] = useState<number | null>(0); // Початковий стан - перший елемент активний
+    const [activeIndex, setActiveIndex] = useState<number | null>(0);
     const faqItems = faqData;
 
     const toggleFAQ = (index: number) => {

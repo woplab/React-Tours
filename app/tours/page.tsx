@@ -37,7 +37,6 @@ function Page() {
         const urlParams = new URLSearchParams(queryString);
         const url_destinations = urlParams.get('destinations');
         const url_attractions = urlParams.get('attractions');
-        console.log(url_destinations, url_attractions);
 
         if (url_destinations) {
             dispatch(updateFilters({ destinations: url_destinations }));

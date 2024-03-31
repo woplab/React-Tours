@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import toursData from '../../../public/data/tours/top-attractions.json';
 import Image from 'next/image';
+import {resetFilters} from "@/app/reducers/filtersSlice";
 
 interface Tour {
     id: number;
@@ -17,6 +18,8 @@ const TravelAtt: React.FC = () => {
     useEffect(() => {
         setTours(toursData.tours);
         setLoading(false);
+        // Reset filters when component mounts
+        resetFilters();
     }, []);
 
     const Skeleton: React.FC = () => {
@@ -36,7 +39,7 @@ const TravelAtt: React.FC = () => {
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold text-dark_blue">Trending Attractions</h2>
                 <Link href={'/tours'} passHref>
-                   See All
+                    See All
                 </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 pb-4">

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import toursData from '../../../public/data/tours/tours-locations.json';
 import Image from "next/image";
+import {resetFilters} from "@/app/reducers/filtersSlice";
 
 interface Tour {
     id: number;
@@ -17,6 +18,8 @@ const TrendingDestinations: React.FC = () => {
     useEffect(() => {
         setTours(toursData.tours);
         setLoading(false);
+        // Reset filters when component mounts
+        resetFilters();
     }, []);
 
     const Skeleton: React.FC = () => {
@@ -48,15 +51,15 @@ const TrendingDestinations: React.FC = () => {
                     tours.map((tour: Tour) => (
                         <div key={tour.id} className="overflow-hidden flex flex-col items-left">
                             <Link href={`/tours?destinations=${encodeURIComponent(tour.name)}`} passHref>
-                                    <Image
-                                        src={tour.image}
-                                        alt={tour.name}
-                                        width='190'
-                                        height='210'
-                                        className="w-48 h-48 object-cover mb-2 rounded-lg"
-                                    />
-                                    <h3 className="text-orange text-sm mb-1">{tour.name}</h3>
-                                    <p className="text-dark_blue text-sm">{tour.description}</p>
+                                <Image
+                                    src={tour.image}
+                                    alt={tour.name}
+                                    width='190'
+                                    height='210'
+                                    className="w-48 h-48 object-cover mb-2 rounded-lg"
+                                />
+                                <h3 className="text-orange text-sm mb-1">{tour.name}</h3>
+                                <p className="text-dark_blue text-sm">{tour.description}</p>
                             </Link>
                         </div>
                     ))
