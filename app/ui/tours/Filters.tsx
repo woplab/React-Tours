@@ -27,7 +27,10 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
                 values.add(tour[field].toString());
             }
         });
-        return Array.from(values).map(value => ({ value, label: value }));
+
+        const sortedValues = Array.from(values).sort((a, b) => a.localeCompare(b));
+
+        return sortedValues.map(value => ({ value, label: value }));
     };
 
     // Calculate min and max prices

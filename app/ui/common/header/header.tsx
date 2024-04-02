@@ -87,9 +87,6 @@ const Header: React.FC = () => {
                         <Link className="text-dark_blue hover:text-gray-700" href="/tours">
                             Tour
                         </Link>
-                        <Link className="text-dark_blue hover:text-gray-700" href="/tours">
-                            Destination
-                        </Link>
                         <Link className="text-dark_blue hover:text-gray-700" href="/contact">
                             Contact
                         </Link>

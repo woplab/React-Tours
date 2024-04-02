@@ -33,9 +33,6 @@ const Footer: React.FC = () => {
                         <Link href="/tours" passHref>
                             Tour
                         </Link>
-                        <Link href="/tours" passHref>
-                            Destination
-                        </Link>
                         <Link href="/contact" passHref>
                             Contact
                         </Link>
