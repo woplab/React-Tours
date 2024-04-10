@@ -61,23 +61,27 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
                 <p className="text-gray-600 text-lg font-bold mb-2">${tour.price_per_day} per day</p>
                 <p className="text-gray-600 ">{truncateDescription(tour.description, 100)}</p>
             </div>
-            <div className="md:w-1/3 w-full flex md:flex-col md:flex-row justify-between items-center">
-                <div>
-                    <div className="md:flex hidden items-center">
-                        <FaCalendarAlt className="inline-block mr-2 h-5 w-5" />
-                        <p className="font-bold text-lg">Start Date:</p>
+            <div className="md:w-1/3 w-full flex md:flex-col justify-between items-center">
+                <div className="flex flex-col justify-between md:gap-4 gap-1">
+                    <div>
+                        <div className="md:flex hidden items-center">
+                            <FaCalendarAlt className="inline-block mr-2 h-5 w-5"/>
+                            <p className="font-bold text-lg">Start Date:</p>
+                        </div>
+                        <p className="md:text-base text-sm">{format(startDate, 'MMMM dd, yyyy')}</p>
                     </div>
-                    <p>{format(startDate, 'MMMM dd, yyyy')}</p>
-                </div>
-                <div>
-                    <div className="md:flex hidden items-center">
-                        <FaCalendarAlt className="inline-block mr-2 h-5 w-5" />
-                        <p className="font-bold text-lg">End Date:</p>
+                    <div>
+                        <div className="md:flex hidden items-center">
+                            <FaCalendarAlt className="inline-block mr-2 h-5 w-5"/>
+                            <p className="font-bold text-lg">End Date:</p>
+                        </div>
+                        <p className="md:text-base text-sm">{format(endDate, 'MMMM dd, yyyy')}</p>
                     </div>
-                    <p>{format(endDate, 'MMMM dd, yyyy')}</p>
                 </div>
-                <Link className="bg-orange hover:bg-transparent_orange text-white px-4 py-2 rounded-lg" href={`/tours/${tour.id}`}>
-                        View Details
+
+                <Link className="bg-orange hover:bg-transparent_orange text-white px-4 py-2 rounded-lg"
+                      href={`/tours/${tour.id}`}>
+                    View Details
                 </Link>
             </div>
         </div>

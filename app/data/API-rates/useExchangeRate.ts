@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
-const EXCHANGE_RATE_API_URL = 'https://v6.exchangerate-api.com/v6/87c4c1fd28a923aae2765140/latest/USD';
+const EXCHANGE_RATE_API_URL = 'https://v6.exchangerate-api.com/v6/e4cf589d1fad8944c0b4a8d2/latest/USD';
 
 interface ConversionRates {
     [key: string]: number;

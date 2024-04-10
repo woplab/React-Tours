@@ -98,6 +98,7 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
             border: state.isFocused ? '1px solid #f6ad55' : '1px solid #e2e8f0',
             boxShadow: state.isFocused ? '0 0 0 2px rgba(246, 173, 85, 0.2)' : 'none',
             borderRadius: '0.375rem',
+            cursor: 'pointer',
             minHeight: 'auto',
             '&:hover': {
                 borderColor: '#f6ad55',
@@ -106,6 +107,7 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
         option: (provided: any, state: any) => ({
             ...provided,
             backgroundColor: state.isFocused ? '#f6ad55' : 'transparent',
+            cursor: 'pointer',
             color: state.isFocused ? 'white' : '#4a5568',
             '&:hover': {
                 backgroundColor: '#f6ad55',
@@ -170,7 +172,7 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
                 <div className="bg-white p-4 rounded-b-lg">
                     <h3 className="text-lg font-semibold">Duration</h3>
                     <Select
-                        className="mb-4"
+                        className="mb-4 cursor-pointer"
                         options={durationOptions}
                         value={durationOptions.find(option => option.value === selectedDuration)}
                         onChange={(selectedOption) => {
@@ -182,7 +184,7 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
                     />
                     <h3 className="text-lg font-semibold ">Group Size</h3>
                     <Select
-                        className="mb-4"
+                        className="mb-4  cursor-pointer"
                         options={groupSizeOptions}
                         value={groupSizeOptions.find(option => option.value === selectedGroupSize)}
                         onChange={(selectedOption) => {
@@ -194,7 +196,7 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
                     />
                     <h3 className="text-lg font-semibold">Age Category</h3>
                     <Select
-                        className="mb-4"
+                        className="mb-4 cursor-pointer"
                         options={ageCategoryOptions}
                         value={ageCategoryOptions.find(option => option.value === selectedAgeCategory)}
                         onChange={(selectedOption) => {
@@ -206,7 +208,7 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
                     />
                     <h3 className="text-lg font-semibold">Languages</h3>
                     <Select
-                        className="mb-4"
+                        className="mb-4 cursor-pointer"
                         options={languagesOptions}
                         value={languagesOptions.find(option => option.value === selectedLanguages)}
                         onChange={(selectedOption) => {
@@ -218,7 +220,7 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
                     />
                     <h3 className="text-lg font-semibold">Destinations</h3>
                     <Select
-                        className="mb-4"
+                        className="mb-4 cursor-pointer"
                         options={destinationsOptions}
                         value={destinationsOptions.find(option => option.value === selectedDestinations)}
                         onChange={(selectedOption) => {
@@ -230,7 +232,7 @@ const Filters: React.FC<FiltersProps> = ({ tours, onChange, onReset }) => {
                     />
                     <h3 className="text-lg font-semibold">Attractions</h3>
                     <Select
-                        className="mb-4"
+                        className="mb-4 cursor-pointer"
                         options={attractionsOptions}
                         value={attractionsOptions.find(option => option.value === selectedAttractions)}
                         onChange={(selectedOption) => {
